@@ -1,0 +1,73 @@
+comprar codigo fuente: https://cod
+ecanyon.net/search/mvc
+pagina para ayudas: https://www.telerik.com/
+
+conocimiento de ASP.NET MVC
+
+Enrutamiento: 
+#clase de enrutamiento en la clase RouteConfig.class
+ routes.MapRoute(
+     "Clientes","Clientes/{nombre}", new { controller = "Clientes" , action ="Buscar", nombre = UrlParameter.Optional}
+     );
+Controladores:
+#crear controllers, podemos retornar html:
+ return
+    @"<ul>
+      <li>Alcampo</li>
+      <li>Carrefour</li>
+      <li>Mercadona</li>
+      <li>Gadis</li>
+      </ul>";
+#convertir en texto plano en un controlador:
+ var input = Server.HtmlEncode(nombre);
+ return Content(input);
+# obtener fecha del sistema :
+ DateTime.Now.ToString("T");
+Acciones: 
+# para agregar en el metodo del contrador , similar a las anotacioens en java.
+# ActionName: remplaza la URL: https://localhost:44361/Home/hora
+ [ActionName("Hora")]
+# no realiza inguna accion al metodo, si se le llama por URL, saldra error 404
+ [NonAction]
+# redirecciona a otro controlador.
+ return RedirectToAction("TodosLosProveedores","proveedores");
+Filtros: 
+#solo si se tiene permisos, el authorize es general
+ [Authorize]
+# authoriza nivel admin
+ [Authorize(Roles ="Admin")]
+# pausea todo por 10 segundos.
+ [OutputCache(Duration =10)]
+ 
+Selectores:
+ #selector GET, en caso URL, siempre entrara a metodo con ese selector.
+ [HttpGet]
+Vistas: 
+ # agregar vistas a lso metodos (html) 
+ public ActionResult MiVista() {return View();}
+Razor:
+#hacer las vistas con codigo razon @, para evitar mucho codigo. para implementar vistas
+    <div> 
+        @for (int index = 0; index < 12; index++) { 
+        <div>@index</div>
+        }
+    </div>
+Nugets: 
+#gestor de paquetes de visual studio. para instalar como EntityFramework.6.4.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
